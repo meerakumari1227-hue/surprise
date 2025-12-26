@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Greeting Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background-image: url('billa.jpeg'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 100, 0.4);
+      width: 90%;
+      max-width: 700px;
+      max-height: 85vh;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 2s ease;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+      margin: 12px 0;
+    }
+
+    .hearts {
+      font-size: 28px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 18px;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 25px;
+      color: #ff3366;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      background: #ff3366;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin: 8px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 100, 0.4);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e60050;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall 3s linear forwards;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="loveCard">
+    <h1>💌 My Love Letter 💌</h1>
+    <div class="hearts">💓✨💖💘💝💞</div>
+
+    <p>I luv you so much bby, my heart beats only for you. 💓</p>
+    <p>I miss you every second we are apart. 💕</p>
+    <p>Thank you mujhe hmesa smjhne ke liye , & SORRY mai apko time nahi de pa rhi.💖</p>
+    <p>You are my sunshine, my peace, and my forever love. 💞💘</p>
+    <p>With you, life feels magical and complete. 💝</p>
+    <p>aur ha jyda pyar ke chakkar me mt rehna pdhai par bhi dhyan dena. 💓</p>
+    <p>Mai apko successful person dekhna chahti hu. 💓</p>
+    <!-- Add more lines here if needed -->
+
+    <div class="footer">Forever yours,  
+      <br><strong>Meera💓</strong>
+    </div>
+
+    <!-- Floating decorative hearts -->
+    <div class="floating-heart" style="left:10%; animation-duration:7s;">❤️</div>
+    <div class="floating-heart" style="left:30%; animation-duration:9s;">💖</div>
+    <div class="floating-heart" style="left:50%; animation-duration:8s;">💕</div>
+    <div class="floating-heart" style="left:70%; animation-duration:10s;">💞</div>
+    <div class="floating-heart" style="left:85%; animation-duration:6s;">💘</div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button onclick="playMusic()">🎵 Play Music 🎵</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="music.mp3"></audio>
+  <script>
+     function playMusic() {
+      const music = document.getElementById("bgMusic");
+      music.play();
+      launchConfetti(); // trigger confetti when music starts
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 50; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        document.body.appendChild(confetti);
+
+        // random position and color
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor = randomColor();
+
+        // random animation duration
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+        // remove after animation
+        setTimeout(() => { confetti.remove(); }, 5000);
+      }
+    }
+
+    function randomColor() {
+      const colors = ["#ff3366", "#ffcc00", "#33ccff", "#66ff66", "#ff99cc"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+
+</body>
+</html>
